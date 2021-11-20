@@ -1,0 +1,22 @@
+jira:
+  token: your_jira_token
+  email: your_jira_account@email.net
+  url: https://your_company.atlassian.net/
+
+logs:
+  path: logs
+  level: debug
+
+db:
+  type: db_typeorm_type
+  login: db_login
+  password: db_password
+  host: localhost
+  port: 27017
+  dbName: your_db_name
+
+swagger:
+  path: 'api'
+  title: your_api_title
+  version: your_api_version
+  description: your_api_description
