@@ -22,7 +22,7 @@ export class JiraSyncService {
     await this.boardService.syncJiraBoards();
   }
 
-  @Cron('45 * * * * *')
+  @Cron(CronExpression.EVERY_HOUR)
   async handleUpdateProjects() {
     await this.projectService.syncJiraProjects();
   }
