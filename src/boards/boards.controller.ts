@@ -1,7 +1,7 @@
 import { Controller, Get, Param, ParseIntPipe} from "@nestjs/common";
 import { BoardsService } from './boards.service';
-import { JBoardQuery } from "./entities/JBoardQuery.model";
-import { JBoardItem } from "./entities/JBoardItem.model";
+import { JBoardQuery } from "./dto/JBoardQuery.model";
+import { JBoardItem } from "./dto/JBoardItem.model";
 import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Boards')

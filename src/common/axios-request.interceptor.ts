@@ -18,6 +18,7 @@ export class AxiosRequestInterceptor implements NestInterceptor {
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     this.client.axiosRef.interceptors.request.use((config) => {
+      console.log("interceptor");
       return this.token && this.baseUrl
         ? {
             ...config,

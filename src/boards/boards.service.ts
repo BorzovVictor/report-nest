@@ -2,15 +2,20 @@ import { Inject, Injectable } from "@nestjs/common";
 import { HttpService } from "@nestjs/axios";
 import { WINSTON_MODULE_PROVIDER } from "nest-winston";
 import { Logger } from "winston";
-import { JBoardQuery } from "./entities/JBoardQuery.model";
+import { JBoardQuery } from "./dto/JBoardQuery.model";
 import { firstValueFrom } from "rxjs";
-import { JBoardItem } from "./entities/JBoardItem.model";
+import { JBoardItem } from "./dto/JBoardItem.model";
+import { BoardRepository } from "./board.repository";
 
 @Injectable()
 export class BoardsService {
   private readonly root = 'rest/agile/1.0/board';
 
-  constructor(private client: HttpService, @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,) {
+  constructor(
+    private client: HttpService,
+    @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
+    private readonly boardRepository: BoardRepository,
+    ) {
   }
 
   async getAll(): Promise<JBoardQuery> {
@@ -30,6 +35,14 @@ export class BoardsService {
     } catch (e) {
       this.logger.error(e);
       throw e;
+    }
+  }
+
+  async syncJiraBoards() {
+    const boards = await this.getAll();
+    console.log({ boards: boards.total });
+    for (const board of boards.values) {
+      await this.boardRepository.addBoard(board);
     }
   }
 

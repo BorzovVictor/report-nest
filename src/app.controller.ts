@@ -3,5 +3,4 @@ import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Jira api')
 @Controller()
-export class AppController {
-}
+export class AppController {}
