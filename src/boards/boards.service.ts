@@ -40,7 +40,6 @@ export class BoardsService {
 
   async syncJiraBoards() {
     const boards = await this.getAll();
-    console.log({ boards: boards.total });
     for (const board of boards.values) {
       await this.boardRepository.addBoard(board);
     }

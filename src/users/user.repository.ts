@@ -12,12 +12,15 @@ export class UserRepository extends MongoRepository<User> {
       return await this.updateUser(existingUser._id, jiraUser);
     }
     const newUser = userToEntity(jiraUser);
-    return await newUser.save();
+    return await this.save(newUser);
   }
 
   async updateUser(userId: string, dataForUpdate: JiraUser): Promise<User> {
     const userFromDto = userToEntity(dataForUpdate);
     const result = await this.update(userId, userFromDto);
+    if(result.affected) {
+      console.log({'users updated': result.affected});
+    }
     return userFromDto;
   }
 }

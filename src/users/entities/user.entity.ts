@@ -1,8 +1,8 @@
-import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn, PrimaryColumn } from "typeorm";
+import { Column, Entity, ObjectIdColumn, PrimaryColumn } from "typeorm";
 import { AvatarUrls } from "../../common/entities/avatarUrls.entity";
 
 @Entity()
-export class User extends BaseEntity {
+export class User {
   @ObjectIdColumn()
   _id: string;
   @Column()
@@ -23,4 +23,8 @@ export class User extends BaseEntity {
   timeZone: string;
   @Column()
   locale: string;
+
+  public constructor(init?: Partial<User>) {
+    Object.assign(this, init);
+  }
 }

@@ -1,6 +1,6 @@
 import { Controller, Get, Param} from "@nestjs/common";
 import { ProjectsService } from './projects.service';
-import { JiraProject } from "./entities/JProject.model";
+import { JiraProject } from "./dto/JProject.model";
 import { ApiTags } from "@nestjs/swagger";
 
 @ApiTags('Projects')

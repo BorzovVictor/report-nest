@@ -13,4 +13,8 @@ export class Board {
   type: string;
   @Column()
   location: Location;
+
+  public constructor(init?:Partial<Board>) {
+    Object.assign(this, init);
+  }
 }

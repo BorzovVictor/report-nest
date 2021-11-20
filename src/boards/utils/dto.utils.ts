@@ -11,23 +11,12 @@ export const boardToDto = (board: Board): JBoardItem => {
 }
 
 export const boardToEntity = (jBoard: JBoardItem): Board => {
-  const board = new Board();
-  board.self = jBoard.self;
-  board.id = jBoard.id;
-  board.name = jBoard.name;
-  board.type = jBoard.type;
-  board.location = locationToEntity(jBoard.location);
-  return board;
+  return new Board({
+    ...jBoard,
+    location: locationToEntity(jBoard.location),
+  });
 }
 
 export const locationToEntity = (jLocation: JLocation): Location => {
-  const location = new Location();
-  location.name = jLocation.name;
-  location.displayName = jLocation.displayName;
-  location.projectId = jLocation.projectId;
-  location.projectName = jLocation.projectName;
-  location.projectKey = jLocation.projectKey;
-  location.projectTypeKey = jLocation.projectTypeKey;
-  location.avatarURI = jLocation.avatarURI;
-  return location;
+  return new Location({ ...jLocation });
 }

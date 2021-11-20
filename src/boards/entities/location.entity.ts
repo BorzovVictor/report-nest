@@ -1,7 +1,7 @@
-import { BaseEntity, Column, Entity, ObjectIdColumn } from "typeorm";
+import { Column, Entity, ObjectIdColumn } from "typeorm";
 
 @Entity()
-export class Location extends BaseEntity{
+export class Location {
   @ObjectIdColumn()
   _id: string;
   @Column()
@@ -18,4 +18,8 @@ export class Location extends BaseEntity{
   avatarURI: string;
   @Column()
   name: string;
+
+  public constructor(init?: Partial<Location>) {
+    Object.assign(this, init);
+  }
 }
