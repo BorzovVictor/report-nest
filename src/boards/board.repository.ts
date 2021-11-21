@@ -19,7 +19,7 @@ export class BoardRepository extends MongoRepository<Board> {
     const boardFromDto = boardToEntity(dataForUpdate);
     const result = await this.update(boardId, boardFromDto);
     if(result.affected) {
-      console.log({ "boards updated": result.affected });
+      console.log({ "boards updated": result.affected, boardId: boardId });
     }
     return boardFromDto;
   }

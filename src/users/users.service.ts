@@ -84,7 +84,6 @@ export class UsersService {
     };
 
     const users = await this.getUsers(filter);
-    console.log({ users: users.length });
     for (const user of users) {
       await this.userRepository.addUser(user);
     }
