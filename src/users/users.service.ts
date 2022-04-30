@@ -83,6 +83,8 @@ export class UsersService {
       query: undefined
     };
 
+    this.logger.info('sync Jira users');
+
     const users = await this.getUsers(filter);
     for (const user of users) {
       await this.userRepository.addUser(user);

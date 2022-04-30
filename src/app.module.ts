@@ -16,6 +16,8 @@ import { jiraConfig, logConfig } from "./configs";
 import { ScheduleModule } from "@nestjs/schedule";
 import { JiraSyncModule } from "./scheduler/jira-sync.module";
 import { getEncodedToken } from "./common/utils/utils";
+import { ReportModule } from './report/report.module';
+import { SkillsModule } from './skills/skills.module';
 
 @Module({
   imports: [
@@ -48,7 +50,9 @@ import { getEncodedToken } from "./common/utils/utils";
     ProjectsModule,
     IssuesModule,
     SearchModule,
-    JiraSyncModule
+    JiraSyncModule,
+    ReportModule,
+    SkillsModule
   ],
   controllers: [AppController],
   providers: [
