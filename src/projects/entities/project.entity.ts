@@ -1,7 +1,7 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
-import { AvatarUrls } from "../../common/entities/avatarUrls.entity";
+import { Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
+import { AvatarUrls } from '../../common/entities/avatarUrls.entity';
 
-@Entity()
+@Entity({name: 'projects'})
 export class Project {
   @ObjectIdColumn()
   id: string;
@@ -27,8 +27,14 @@ export class Project {
   entityId?: string;
   @Column()
   uuid?: string;
+  @Column('timestampz')
+  @CreateDateColumn()
+  created_at: Date;
+  @Column('timestampz')
+  @UpdateDateColumn()
+  updateAt: Date;
 
-  public constructor(init?: Partial<Project>) {
-    Object.assign(this, init);
+  public constructor( init?: Partial<Project> ) {
+	  Object.assign(this, init);
   }
 }

@@ -1,7 +1,7 @@
-import { Column, Entity, ObjectIdColumn, PrimaryColumn } from "typeorm";
-import { AvatarUrls } from "../../common/entities/avatarUrls.entity";
+import { Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { AvatarUrls } from '../../common/entities/avatarUrls.entity';
 
-@Entity()
+@Entity({name: 'users'})
 export class User {
   @ObjectIdColumn()
   _id: string;
@@ -23,8 +23,14 @@ export class User {
   timeZone: string;
   @Column()
   locale: string;
+  @Column('timestampz')
+  @CreateDateColumn()
+  created_at: Date;
+  @Column('timestampz')
+  @UpdateDateColumn()
+  updateAt: Date;
 
   public constructor(init?: Partial<User>) {
-    Object.assign(this, init);
+	Object.assign(this, init);
   }
 }

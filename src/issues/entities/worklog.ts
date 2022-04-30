@@ -1,5 +1,5 @@
-import { Author } from "./author";
-import { Visibility } from "./visibility";
+import { Author } from './author';
+import { Visibility } from './visibility';
 
 export interface Worklog {
   self: string;

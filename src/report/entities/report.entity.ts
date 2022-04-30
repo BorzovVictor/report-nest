@@ -1,8 +1,8 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
-import { User } from "../../users/entities/user.entity";
-import { Project } from "../../projects/entities/project.entity";
-import { Skill } from "../../skills/entities/skill.entity";
-import { ReportDetail } from "./report-detail.entity";
+import { Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
+import { Project } from '../../projects/entities/project.entity';
+import { Skill } from '../../skills/entities/skill.entity';
+import { ReportDetail } from './report-detail.entity';
 
 @Entity()
 export class Report {
@@ -16,4 +16,10 @@ export class Report {
   techStack: Skill[];
   @Column()
   details: ReportDetail[];
+  @Column('timestampz')
+  @CreateDateColumn()
+  created_at: Date;
+  @Column('timestampz')
+  @UpdateDateColumn()
+  updateAt: Date;
 }

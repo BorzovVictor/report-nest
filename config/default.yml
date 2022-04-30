@@ -1,7 +1,7 @@
 jira:
   token: your_jira_token
   email: your_jira_account@email.net
-  url: https://your_company.atlassian.net/
+  baseUrl: https://your_company.atlassian.net/
 
 logs:
   path: logs

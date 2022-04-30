@@ -1,7 +1,7 @@
-import { Column, Entity, ObjectIdColumn } from "typeorm";
-import { Location } from "./location.entity";
+import { Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
+import { Location } from './location.entity';
 
-@Entity()
+@Entity({name: 'boards'})
 export class Board {
   @ObjectIdColumn()
   id: number;
@@ -13,8 +13,14 @@ export class Board {
   type: string;
   @Column()
   location: Location;
+  @Column('timestampz')
+  @CreateDateColumn()
+  created_at: Date;
+  @Column('timestampz')
+  @UpdateDateColumn()
+  updateAt: Date;
 
   public constructor(init?:Partial<Board>) {
-    Object.assign(this, init);
+	Object.assign(this, init);
   }
 }
