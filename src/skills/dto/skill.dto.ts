@@ -1,4 +1,4 @@
 export class SkillDto {
-  name: string;
-  description: string;
+	name: string;
+	description: string;
 }

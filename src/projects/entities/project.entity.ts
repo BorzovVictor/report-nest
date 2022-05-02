@@ -29,7 +29,7 @@ export class Project {
   uuid?: string;
   @Column('timestampz')
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
   @Column('timestampz')
   @UpdateDateColumn()
   updateAt: Date;
