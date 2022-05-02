@@ -1,4 +1,4 @@
-import { JiraIssue } from "../../issues/entities/JIssue.model";
+import { JiraIssue } from '../../issues/entities/JIssue.model';
 
 export interface JiraSearch {
   expand:     string;
