@@ -1,9 +1,9 @@
-import {Column, CreateDateColumn, Entity, ObjectIdColumn, UpdateDateColumn} from 'typeorm';
+import { Column, CreateDateColumn, Entity, ObjectID, ObjectIdColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
 export class Skill {
 	@ObjectIdColumn()
-	_id: string;
+	_id: ObjectID;
 	@Column()
 	name: string;
 	@Column()
