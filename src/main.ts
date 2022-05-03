@@ -5,7 +5,7 @@ import { swaggerConfig } from './configs';
 
 async function bootstrap() {
 	const app = await NestFactory.create(AppModule);
-
+	app.setGlobalPrefix('api');
 	const swaggerOptions = new DocumentBuilder()
 		.setTitle(swaggerConfig.title)
 		.setDescription(swaggerConfig.description || '')

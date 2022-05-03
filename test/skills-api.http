@@ -1,0 +1,82 @@
+### Create new skill
+POST http://localhost:3000/api/skills
+accept: */*
+Content-Type: application/json
+
+{
+  "name": ".NET",
+  "description": "skill description"
+}
+
+> {%
+client.test("Request executed successfully", function () {
+  client.assert(response.status === 201, "Response status is not 201");
+  client.assert(response.body.name === ".NET");
+  client.assert(response.body.description === "skill description");
+  client.global.set('id', response.body._id);
+});
+%}
+
+### Find skill by Id
+GET http://localhost:3000/api/skills/{{id}}
+Content-Type: application/json
+
+> {%
+client.test("Request executed successfully", function () {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.name === ".NET");
+  client.assert(response.body.description === "skill description");
+});
+%}
+
+### Get all skills
+GET http://localhost:3000/api/skills
+Accept: application/json
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+});
+%}
+
+### Update skill
+PUT http://localhost:3000/api/skills/{{id}}
+accept: */*
+Content-Type: application/json
+
+{
+  "description": "NET is a developer platform with tools and libraries for building any type of app, including web, mobile, desktop, games, IoT, cloud, and microservices."
+}
+
+> {%
+client.test("Request executed successfully", function () {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body.description === "NET is a developer platform with tools and libraries for building any type of app, including web, mobile, desktop, games, IoT, cloud, and microservices.");
+});
+%}
+###
+
+### Remove skill by Id
+DELETE http://localhost:3000/api/skills/{{id}}
+accept: */*
+
+> {%
+client.test("Request executed successfully", function() {
+  client.assert(response.status === 200, "Response status is not 200");
+  client.assert(response.body === 'true', "Skill successfully deleted");
+});
+%}
+
+<> 2022-05-03T145556.200.html
+<> 2022-05-03T145436.200.html
+<> 2022-05-03T145420.200.html
+<> 2022-05-03T145326.200.html
+<> 2022-05-03T145254.404.json
+<> 2022-05-03T145227.404.json
+<> 2022-05-03T145132.404.json
+<> 2022-05-03T145118.404.json
+
+###
+
+
+

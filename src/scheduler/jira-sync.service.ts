@@ -13,7 +13,7 @@ export class JiraSyncService {
 	) {
 	}
 
-	@Cron(CronExpression.EVERY_MINUTE)
+	@Cron(CronExpression.EVERY_HOUR)
 	async handleUpdateUsers() {
 		await this.userService.syncJiraUsers();
 	}
