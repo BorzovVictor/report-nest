@@ -6,4 +6,4 @@
  start mongo: `docker-compose up`
 
 # Swagger
-    http://localhost:3000/api/
+    http://localhost:3100/api/
