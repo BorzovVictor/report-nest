@@ -17,11 +17,7 @@ export class ProjectRepository extends MongoRepository<Project> {
 
 	async updateProject(projectId: string, dataForUpdate: JiraProject): Promise<Project> {
 		const projectToUpdate = projectToEntity(dataForUpdate);
-		const result = await this.update(projectId, projectToUpdate);
-		if (result.affected) {
-			// tslint:disable-next-line:no-console
-			console.log({'projects updated': result.affected});
-		}
+		await this.update(projectId, projectToUpdate);
 		return projectToUpdate;
 	}
 }
